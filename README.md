@@ -16,7 +16,7 @@ gradle clean install uploadArchives
 compile "com.spring4all:spring-boot-starter-hbase:1.0.0.RELEASE"
 ```
 ## 集成
-在spring-boot项目的application.properties文件中加入spring.data.hbase.quorum,spring.data.hbase.rootDir,spring.data.hbase.nodeParent配置项，并赋予正确的值
+在spring-boot项目的application.properties文件中加入spring.hbase.quorum,spring.hbase.rootDir,spring.hbase.nodeParent配置项，并赋予正确的值
 ## 使用
 ### query
 1. 将上述配置项赋予正确的值
@@ -72,7 +72,7 @@ public class PeopleRowMapper implements RowMapper<PeopleDto> {
 ```
 4. query操作
 ```java
-import com.jthink.skyeye.data.hbase.api.HbaseTemplate;
+import com.jthink.skyeye.data.hbase.api.HBaseTemplate;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +83,7 @@ import java.util.List;
 public class QueryService {
 
     @Autowired
-    private HbaseTemplate hbaseTemplate;
+    private HBaseTemplate hbaseTemplate;
 
     public List<PeopleDto> query(String startRow, String stopRow) {
         Scan scan = new Scan(Bytes.toBytes(startRow), Bytes.toBytes(stopRow));
@@ -102,7 +102,7 @@ public class QueryService {
 1. 将上述配置项赋予正确的值
 2. update、delete、put操作
 ```java
-import com.jthink.skyeye.data.hbase.api.HbaseTemplate;
+import com.jthink.skyeye.data.hbase.api.HBaseTemplate;
 import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.client.Mutation;
 import org.apache.hadoop.hbase.client.Scan;
@@ -117,7 +117,7 @@ import java.util.List;
 public class QueryService {
 
     @Autowired
-    private HbaseTemplate hbaseTemplate;
+    private HBaseTemplate hbaseTemplate;
 
     public List<PeopleDto> query(String startRow, String stopRow) {
         Scan scan = new Scan(Bytes.toBytes(startRow), Bytes.toBytes(stopRow));

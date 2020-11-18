@@ -32,15 +32,15 @@ import java.util.concurrent.TimeUnit;
  * desc： copy from spring data hadoop hbase, modified by JThink, use the 1.0.0 api
  * date： 2016-11-15 15:42:46
  */
-public class HbaseTemplate implements HbaseOperations {
+public class HBaseTemplate implements HBaseOperations {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HbaseTemplate.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HBaseTemplate.class);
 
     private Configuration configuration;
 
     private volatile Connection connection;
 
-    public HbaseTemplate(Configuration configuration) {
+    public HBaseTemplate(Configuration configuration) {
         this.setConfiguration(configuration);
         Assert.notNull(configuration, " a valid configuration is required");
     }
@@ -57,7 +57,7 @@ public class HbaseTemplate implements HbaseOperations {
             table = this.getConnection().getTable(TableName.valueOf(tableName));
             return action.doInTable(table);
         } catch (Throwable throwable) {
-            throw new HbaseSystemException(throwable);
+            throw new HBaseSystemException(throwable);
         } finally {
             if (null != table) {
                 try {
@@ -156,7 +156,7 @@ public class HbaseTemplate implements HbaseOperations {
             action.doInMutator(mutator);
         } catch (Throwable throwable) {
             sw.stop();
-            throw new HbaseSystemException(throwable);
+            throw new HBaseSystemException(throwable);
         } finally {
             if (null != mutator) {
                 try {

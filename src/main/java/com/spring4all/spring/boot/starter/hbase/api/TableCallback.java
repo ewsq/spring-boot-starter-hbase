@@ -19,7 +19,7 @@ import org.apache.hadoop.hbase.client.Table;
 public interface TableCallback<T> {
 
     /**
-     * Gets called by {@link HbaseTemplate} execute with an active Hbase table. Does need to care about activating or closing down the table.
+     * Gets called by {@link HBaseTemplate} execute with an active Hbase table. Does need to care about activating or closing down the table.
      *
      * @param table active Hbase table
      * @return a result object, or null if none

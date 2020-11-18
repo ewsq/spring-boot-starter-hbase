@@ -20,7 +20,7 @@ import java.util.List;
  * desc: copy from spring data hadoop hbase, modified by JThink, remove the unuse interface
  * date: 2016-11-15 14:49:52
  */
-public interface HbaseOperations {
+public interface HBaseOperations {
 
     /**
      * Executes the given action against the specified table handling resource management.

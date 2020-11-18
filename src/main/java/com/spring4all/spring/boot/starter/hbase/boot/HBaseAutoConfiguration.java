@@ -1,6 +1,6 @@
 package com.spring4all.spring.boot.starter.hbase.boot;
 
-import com.spring4all.spring.boot.starter.hbase.api.HbaseTemplate;
+import com.spring4all.spring.boot.starter.hbase.api.HBaseTemplate;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ import org.springframework.context.annotation.Bean;
  * date： 2016-11-16 11:11:27
  */
 @org.springframework.context.annotation.Configuration
-@EnableConfigurationProperties(HbaseProperties.class)
-@ConditionalOnClass(HbaseTemplate.class)
-public class HbaseAutoConfiguration {
+@EnableConfigurationProperties(HBaseProperties.class)
+@ConditionalOnClass(HBaseTemplate.class)
+public class HBaseAutoConfiguration {
 
     private static final String HBASE_QUORUM = "hbase.zookeeper.quorum";
     private static final String HBASE_ROOTDIR = "hbase.rootdir";
@@ -28,15 +28,15 @@ public class HbaseAutoConfiguration {
 
 
     @Autowired
-    private HbaseProperties hbaseProperties;
+    private HBaseProperties hbaseProperties;
 
     @Bean
-    @ConditionalOnMissingBean(HbaseTemplate.class)
-    public HbaseTemplate hbaseTemplate() {
+    @ConditionalOnMissingBean(HBaseTemplate.class)
+    public HBaseTemplate hbaseTemplate() {
         Configuration configuration = HBaseConfiguration.create();
         configuration.set(HBASE_QUORUM, this.hbaseProperties.getQuorum());
         configuration.set(HBASE_ROOTDIR, hbaseProperties.getRootDir());
         configuration.set(HBASE_ZNODE_PARENT, hbaseProperties.getNodeParent());
-        return new HbaseTemplate(configuration);
+        return new HBaseTemplate(configuration);
     }
 }
